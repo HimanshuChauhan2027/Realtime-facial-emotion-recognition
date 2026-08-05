@@ -1,87 +1,166 @@
-# Real-Time Facial Expression Recognition using CNN
+# 😊 Real-Time Facial Emotion Recognition using CNN
 
-This project implements a real-time facial expression recognition system using a Convolutional Neural Network (CNN) trained on grayscale facial images. The system captures facial expressions via webcam, detects faces using Haar cascades, and classifies emotions into seven distinct categories: Angry, Disgust, Fear, Happy, Sad, Surprise, and Neutral.
+A real-time facial emotion recognition system built with **TensorFlow/Keras**, **OpenCV**, and **Convolutional Neural Networks (CNNs)**. The application captures live video from a webcam, detects human faces using Haar Cascade classifiers, and predicts the displayed emotion in real time.
 
-## 📌 Overview
+---
 
-Facial expression is a key indicator of human emotions. This project focuses on identifying these emotions using deep learning, specifically leveraging a CNN architecture trained on 48x48 grayscale images.
+## 📌 Features
 
-## 🔧 Model Architecture
+- 🎥 Real-time emotion detection using a webcam
+- 😀 Detects **7 facial emotions**
+- 🧠 CNN-based deep learning model
+- 👤 Automatic face detection using OpenCV Haar Cascade
+- ⚡ Fast and lightweight inference
+- 💾 Pre-trained model included for instant testing
+- 📓 Jupyter Notebook provided for model training
 
-The CNN model was constructed using Keras and TensorFlow backend. It includes the following components:
+---
 
-- **Input Shape**: (48, 48, 1)
-- **Convolutional Layers**: Four Conv2D layers with filters ranging from 32 to 128.
-- **Batch Normalization**: Applied after each convolution to stabilize learning.
-- **Activation**: ReLU is used for all hidden layers; Softmax in the output layer.
-- **Dropout**: Applied to prevent overfitting (rates of 0.25 and 0.5).
-- **MaxPooling**: Reduces spatial dimensions progressively.
-- **Dense Layers**: One fully connected layer with 250 units and one output layer with 7 units.
+## 🎯 Detected Emotions
 
-This model is encapsulated in a `Sequential` structure and uses `categorical_crossentropy` as the loss function.
+The model classifies facial expressions into the following categories:
 
-> 🧠 **Emotion Classes**: Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral
+- 😠 Angry
+- 🤢 Disgust
+- 😨 Fear
+- 😊 Happy
+- 😐 Neutral
+- 😢 Sad
+- 😲 Surprise
 
-## 📈 Accuracy
+---
 
-- **Training Accuracy**: ~95%
-- **Validation Accuracy**: ~65% (indicative, depends on dataset preprocessing and balance)
+## 🛠️ Tech Stack
 
-## 🎥 Real-Time Detection (`webcam_test.py`)
+| Technology | Purpose |
+|------------|---------|
+| Python | Programming Language |
+| TensorFlow / Keras | CNN Model |
+| OpenCV | Face Detection & Webcam |
+| NumPy | Numerical Operations |
+| Jupyter Notebook | Model Training |
 
-This script initiates webcam access and performs real-time facial expression recognition. Here's how it works:
+---
 
-1. **Model Loading**:
-   - Loads model architecture from `Facial Expression Recognition.json`
-   - Loads trained weights from `fer.h5`
+## 📂 Project Structure
 
-2. **Face Detection**:
-   - Uses `haarcascade_frontalface_default.xml` to detect face regions.
+```
+Realtime-facial-emotion-recognition/
+│
+├── Facial Expression Recognition.json     # Model architecture
+├── fer.h5                                 # Trained model weights
+├── webcam_test.py                         # Real-time emotion detection
+├── train_emotion_cnn.ipynb                # Model training notebook
+├── haarcascade_frontalface_default.xml    # Face detection model
+├── requirements.txt
+└── README.md
+```
 
-3. **Preprocessing**:
-   - Converts image to grayscale.
-   - Crops and resizes the detected face to 48x48 pixels.
-   - Normalizes pixel values.
+---
 
-4. **Prediction**:
-   - Passes the preprocessed face image into the CNN model.
-   - Retrieves the predicted emotion and displays it on the video feed.
+## ⚙️ Installation
 
-5. **Visualization**:
-   - Draws bounding boxes and emotion labels over the detected faces.
+### 1. Clone the repository
 
-> Press **'q'** to quit the webcam interface.
+```bash
+git clone https://github.com/your-username/Realtime-facial-emotion-recognition.git
+cd Realtime-facial-emotion-recognition
+```
 
-## 📁 Files
-
-- `webcam_test.py`  
-  Real-time detection script using webcam and CNN model.
-
-- `Real-Time Facial Expression Detection.ipynb`  
-  Jupyter Notebook for training, validating, and evaluating the CNN model.
-
-- `Facial Expression Recognition.json`  
-  Serialized CNN architecture in JSON format.
-
-- `fer.h5`  
-  Pre-trained model weights for facial emotion classification.
-
-- `haarcascade_frontalface_default.xml`  
-  Haar cascade classifier for frontal face detection using OpenCV.
-
-
-## 🧠 Core Functions (for reference)
-
-| Function | Description |
-|---------|-------------|
-| `model_from_json()` | Loads CNN architecture from serialized JSON. |
-| `CascadeClassifier()` | Initializes Haar cascade for face detection. |
-| `detectMultiScale()` | Detects objects (faces) in grayscale frames. |
-| `model.predict()` | Performs emotion classification on face images. |
-
-
-## 🚀 How to Run
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
+```
+
+### 3. Run the application
+
+```bash
 python webcam_test.py
+```
+
+Your webcam will open, and the detected emotion will be displayed above the detected face.
+
+---
+
+## 🧠 Model Overview
+
+The project uses a **Convolutional Neural Network (CNN)** trained on grayscale facial images.
+
+### Pipeline
+
+1. Capture video frame
+2. Detect face using Haar Cascade
+3. Convert face to grayscale
+4. Resize to model input dimensions
+5. Normalize pixel values
+6. Predict emotion using CNN
+7. Display emotion label in real time
+
+---
+
+## 📸 Output
+
+The application detects faces from the webcam and overlays the predicted emotion label on the video feed in real time.
+
+Example:
+
+```
+😊 Happy
+😢 Sad
+😠 Angry
+😲 Surprise
+```
+
+---
+
+## 📋 Requirements
+
+- Python 3.8+
+- TensorFlow
+- OpenCV
+- NumPy
+- Webcam
+
+Install dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🚀 Future Improvements
+
+- Improve model accuracy with transfer learning
+- Support multiple face detection
+- Deploy as a web application using Flask or Streamlit
+- Optimize inference speed
+- Add emotion confidence scores
+- Support video file input
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is intended for educational and research purposes.
+
+---
+
+## 👨‍💻 Author
+
+**HIMANSHU CHAUHAN**
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
