@@ -1,4 +1,4 @@
-# 😊 Real-Time Facial Emotion Recognition using CNN
+# Real-Time Facial Emotion Recognition using CNN
 
 A real-time facial emotion recognition system built with **TensorFlow/Keras**, **OpenCV**, and **Convolutional Neural Networks (CNNs)**. The application captures live video from a webcam, detects human faces using Haar Cascade classifiers, and predicts the displayed emotion in real time.
 
